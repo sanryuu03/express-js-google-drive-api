@@ -1,5 +1,10 @@
 # Release Notes
 
+## v1.0.2 (2023-07-24)
+
+- delete single file ke google drive
+- generate Public Url single file ke google drive => get share link file
+
 ## v1.0.1 (2023-07-24)
 
 - npm i googleapis

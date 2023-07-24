@@ -50,6 +50,67 @@ const uploadFile = async (req, res) => {
   }
 }
 
+const deleteFile = async (req, res) => {
+  const { id } = req.params
+  try {
+    await drive.files.delete({
+      fileId: id,
+    })
+
+    const umpanBalik = {
+      error: false,
+      message: 'success',
+      data: 'berhasil dihapus'
+    }
+    return res.status(200).json({ umpanBalik })
+  } catch (err) {
+    const umpanBalik = {
+      error: true,
+      message: err.message,
+      data: 'kosong'
+    }
+    return res.status(500).json({ umpanBalik: umpanBalik || `Internal server error` })
+  }
+}
+
+const generatePublicUrl = async (req, res) => {
+  const { id } = req.params
+  try {
+    await drive.permissions.create({
+      fileId: id,
+      requestBody: {
+        role: 'reader',
+        type: 'anyone',
+      },
+    })
+
+    /* 
+    webViewLink: View the file in browser
+    webContentLink: Direct download link 
+    */
+    const response = await drive.files.get({
+      fileId: id,
+      fields: 'webViewLink, webContentLink',
+    })
+
+    const umpanBalik = {
+      error: false,
+      message: 'success',
+      data: response.data
+    }
+    return res.status(201).json({ umpanBalik })
+  } catch (err) {
+    const umpanBalik = {
+      error: true,
+      message: err.message,
+      data: 'kosong'
+    }
+    return res.status(500).json({ umpanBalik: umpanBalik || `Internal server error` })
+  }
+}
+
 module.exports = {
-  uploadFile
+  uploadFile,
+  deleteFile,
+  generatePublicUrl
 }

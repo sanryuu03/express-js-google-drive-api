@@ -1,5 +1,9 @@
 # Release Notes
 
+## v1.0.3 (2023-07-24)
+
+- upload multiple files ke google drive
+
 ## v1.0.2 (2023-07-24)
 
 - delete single file ke google drive

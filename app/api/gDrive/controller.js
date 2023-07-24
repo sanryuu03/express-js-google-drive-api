@@ -109,8 +109,49 @@ const generatePublicUrl = async (req, res) => {
   }
 }
 
+const multiFile = async (req, res) => {
+  const multipleFile = req.files.multiple_file
+  try {
+    const response = await Promise.all(
+      multipleFile.map(async (r) => {
+        const filePath = r.path
+        const originalExt = r.originalname.split('.')[r.originalname.split('.').length - 1]
+        const filename = r.filename + '.' + originalExt
+        const { data } = await drive.files.create({
+          requestBody: {
+            name: filename,
+            mimeType: r.mimetype,
+            parents: ['1e2fqB71u_mA-gHBdcB6_WPS6YWl4fdH0']
+          },
+          media: {
+            mimeType: r.mimetype,
+            body: fs.createReadStream(filePath),
+          },
+          fields: 'id, name'
+        })
+        return data
+      })
+    )
+
+    const umpanBalik = {
+      error: false,
+      message: 'success',
+      data: response
+    }
+    return res.status(201).json({ umpanBalik })
+  } catch (err) {
+    const umpanBalik = {
+      error: true,
+      message: err.message,
+      data: 'kosong'
+    }
+    return res.status(500).json({ umpanBalik: umpanBalik || `Internal server error` })
+  }
+}
+
 module.exports = {
   uploadFile,
   deleteFile,
-  generatePublicUrl
+  generatePublicUrl,
+  multiFile
 }

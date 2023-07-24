@@ -1,5 +1,11 @@
 # Release Notes
 
+## v1.0.1 (2023-07-24)
+
+- npm i googleapis
+- npm i multer
+- upload single file ke google drive
+
 ## v1.0.0 (2023-07-07)
 
 node js v18.12.1.

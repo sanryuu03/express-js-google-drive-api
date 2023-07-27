@@ -1,5 +1,9 @@
 # Release Notes
 
+## v1.0.4 (2023-07-27)
+
+- APP_PRODUCTION_PORT
+
 ## v1.0.3 (2023-07-24)
 
 - upload multiple files ke google drive

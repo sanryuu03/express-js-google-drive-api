@@ -1,5 +1,9 @@
 # Release Notes
 
+## v1.0.5 (2023-07-29)
+
+- docker
+
 ## v1.0.4 (2023-07-27)
 
 - APP_PRODUCTION_PORT

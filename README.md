@@ -14,6 +14,11 @@ This is a [express.js](https://expressjs.com/).
 
       docker compose start
 
+- one line => Builds, (re)creates, starts, and attaches to containers for a service.
+
+      docker compose up
+      docker compose up -d => --detach , -d		Detached mode: Run containers in the background
+
 - cek image
 
       docker image ls
@@ -33,6 +38,14 @@ This is a [express.js](https://expressjs.com/).
 - hapus image
 
       docker image rm IMAGE ID
+
+- masuk ke dalam container
+
+      docker exec -i -t express-js-google-drive-api /bin/bash
+
+- list file
+
+      ls -al
 
 # Referensi
 

@@ -3,9 +3,8 @@ FROM node:18.17.0
 WORKDIR /app
 
 COPY package.json .
-
-RUN npm install
+RUN npm install -g nodemon && npm install
 
 COPY . .
 
-CMD [ "node", "app.js" ]
+EXPOSE 3500/tcp

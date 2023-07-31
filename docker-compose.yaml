@@ -1,9 +1,10 @@
 version: "3.8"
 
 services:
-  web:
+  express-js-google-drive-api:
+    container_name: 'express-js-google-drive-api'
     build:
-      context: "./"
+      context: "."
       dockerfile: Dockerfile
     image: "express-js-google-drive-api:1.0.0"
     environment:
@@ -12,3 +13,6 @@ services:
       - protocol: tcp
         published: 3500
         target: 3500
+    volumes:
+      - .:/app/
+    command: npm run dev

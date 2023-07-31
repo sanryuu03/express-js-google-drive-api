@@ -1,5 +1,9 @@
 # Release Notes
 
+## v1.0.6 (2023-07-31)
+
+- docker compose
+
 ## v1.0.5 (2023-07-29)
 
 - docker

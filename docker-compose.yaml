@@ -11,8 +11,8 @@ services:
       - "NODE_ENV=development"
     ports:
       - protocol: tcp
-        published: 3500
-        target: 3500
+        published: 2052
+        target: 80
     volumes:
       - .:/app/
       - /app/node_modules
